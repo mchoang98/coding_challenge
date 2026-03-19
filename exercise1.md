@@ -1,14 +1,18 @@
-# Python Exercises – Input Processing & Logging (Refactored)
+# Python Exercises – Input Processing & Logging 
 
 ---
 
-## General Rules
+## Yêu cầu chung
 
-* Input is read from **stdin**.
-* Output must be written to **stdout**.
-* Follow exact output format (no extra spaces or lines).
-* Index starts from **0** unless specified otherwise.
-* Use deterministic logic (no randomness).
+Đọc input từ stdin
+
+Ghi output ra stdout
+
+Tuân thủ đúng định dạng (không dư khoảng trắng hay dòng)
+
+Index bắt đầu từ 0 (trừ khi có quy định khác)
+
+Dùng logic xác định (không dùng ngẫu nhiên)
 
 ---
 
