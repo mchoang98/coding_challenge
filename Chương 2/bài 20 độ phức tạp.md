@@ -1,7 +1,7 @@
 # BÀI 20. ĐỘ PHỨC TẠP THUẬT TOÁN
 
 ## Làm sao biết một chương trình chạy nhanh hay chậm?
-<img width="200" height="400" alt="image" src="https://github.com/user-attachments/assets/83abb3f9-a3a4-4f9b-a529-1efa4bd8b379" />
+<img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/83abb3f9-a3a4-4f9b-a529-1efa4bd8b379" />
 
 ---
 
