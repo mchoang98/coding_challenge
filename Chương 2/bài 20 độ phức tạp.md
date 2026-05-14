@@ -58,9 +58,7 @@ Tài liệu chuyên Tin xem phân tích độ phức tạp là bước nền t�
 Cho số nguyên dương `N`.
 Hãy tính:
 
-[
-S = 1 + 2 + 3 + ... + N
-]
+$S = 1 + 2 + 3 + ... + N$
 
 ---
 
@@ -92,9 +90,7 @@ Nếu `N = 1 000 000`, chương trình thực hiện **1 000 000 lần cộng**.
 
 ## Cách 2. Dùng công thức
 
-[
-S = \frac{N(N+1)}{2}
-]
+$S = \frac{N(N+1)}{2}$
 
 ```python
 n = int(input())
@@ -138,9 +134,7 @@ Hai chương trình đều đúng, nhưng:
 
 Ta thường dùng ký hiệu:
 
-[
-O(...)
-]
+$O(...)$
 
 đọc là **Big O**.
 
@@ -191,9 +185,7 @@ Dù `a`, `b` lớn hay nhỏ, số phép tính chính vẫn như nhau.
 
 ### Độ phức tạp
 
-[
-O(1)
-]
+$O(1)$
 
 ---
 
@@ -206,9 +198,7 @@ print(n * n)
 
 Chỉ có một phép nhân.
 
-[
-O(1)
-]
+$O(1)$
 
 ---
 
@@ -238,9 +228,7 @@ Vòng lặp chạy đúng `N` lần.
 
 ### Độ phức tạp
 
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -263,9 +251,7 @@ Ta duyệt qua từng phần tử đúng một lần.
 
 ### Độ phức tạp
 
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -292,15 +278,11 @@ for i in range(n):
 
 Tổng số lần:
 
-[
-N \times N = N^2
-]
+$N \times N = N^2$
 
 ### Độ phức tạp
 
-[
-O(N^2)
-]
+$O(N^2)$
 
 ---
 
@@ -321,15 +303,11 @@ print(count)
 
 Số cặp là:
 
-[
-\frac{N(N-1)}{2}
-]
+$\frac{N(N-1)}{2}$
 
 Khi xét Big O, ta chỉ giữ bậc lớn nhất:
 
-[
-O(N^2)
-]
+$O(N^2)$
 
 ---
 
@@ -354,15 +332,11 @@ for i in range(n):
 
 Tổng số lần lặp:
 
-[
-N \times N \times N = N^3
-]
+$N \times N \times N = N^3$
 
 ### Độ phức tạp
 
-[
-O(N^3)
-]
+$O(N^3)$
 
 ---
 
@@ -414,9 +388,7 @@ Chỉ cần khoảng `log₂N` bước.
 
 ### Độ phức tạp
 
-[
-O(\log N)
-]
+$O(\log N)$
 
 ---
 
@@ -457,9 +429,7 @@ a.sort()
 
 Việc sắp xếp thông thường thường được đánh giá khoảng:
 
-[
-O(N \log N)
-]
+$O(N \log N)$
 
 ---
 
@@ -491,9 +461,7 @@ Mỗi dòng là thao tác đơn giản.
 
 ### Độ phức tạp
 
-[
-O(1)
-]
+$O(1)$
 
 ---
 
@@ -515,14 +483,10 @@ for j in range(n):
 * Vòng 2: `O(N)`
 
 Tổng:
-[
-O(N) + O(N) = O(2N)
-]
+$O(N) + O(N) = O(2N)$
 
 Bỏ hằng số:
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -538,9 +502,7 @@ for i in range(n):
         print(i, j)
 ```
 
-[
-O(N) \times O(N) = O(N^2)
-]
+$O(N) \times O(N) = O(N^2)$
 
 ---
 
@@ -557,9 +519,7 @@ while n > 1:
 
 ### Độ phức tạp
 
-[
-O(\log N)
-]
+$O(\log N)$
 
 ---
 
@@ -581,9 +541,7 @@ for i in range(1, n + 1):
 
 ### Độ phức tạp
 
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -599,16 +557,12 @@ for i in range(1, 2 * n + 1):
 Có `2N` lần lặp.
 
 Trong Big O:
-[
-O(2N) = O(N)
-]
+$O(2N) = O(N)$
 
 ### Kết luận
 
 Không viết `O(2N)`, mà viết:
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -628,15 +582,11 @@ for j in range(n):
 * Vòng sau: `N`
 
 Tổng:
-[
-N + N = 2N
-]
+$N + N = 2N$
 
 ### Độ phức tạp
 
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -655,9 +605,7 @@ for i in range(n):
 
 ### Độ phức tạp
 
-[
-O(N^2)
-]
+$O(N^2)$
 
 ---
 
@@ -680,17 +628,13 @@ Số lần chạy của vòng trong:
 
 Tổng số lần:
 
-[
-1 + 2 + 3 + \dots + N = \frac{N(N+1)}{2}
-]
+$1 + 2 + 3 + \dots + N = \frac{N(N+1)}{2}$
 
 Bậc lớn nhất là `N²`.
 
 ### Độ phức tạp
 
-[
-O(N^2)
-]
+$O(N^2)$
 
 Đây cũng là ví dụ được phân tích trực tiếp trong tài liệu chuyên Tin. 
 
@@ -714,9 +658,7 @@ Mỗi bước giảm một nửa.
 
 ### Độ phức tạp
 
-[
-O(\log N)
-]
+$O(\log N)$
 
 Tài liệu chuyên Tin cũng đưa ra đúng mẫu bài này để học sinh nhận diện độ phức tạp logarit. 
 
@@ -770,9 +712,7 @@ print(count)
 
 ### Độ phức tạp
 
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -780,15 +720,11 @@ O(N)
 
 Các số chính phương không vượt quá `N` là:
 
-[
-1^2, 2^2, 3^2, \dots, \lfloor \sqrt{N} \rfloor^2
-]
+$1^2, 2^2, 3^2, \dots, \lfloor \sqrt{N} \rfloor^2$
 
 Vậy số lượng chính là:
 
-[
-\lfloor \sqrt{N} \rfloor
-]
+$\lfloor \sqrt{N} \rfloor$
 
 ### Code
 
@@ -801,9 +737,7 @@ print(isqrt(n))
 
 ### Độ phức tạp
 
-[
-O(1)
-]
+$O(1)$
 
 ---
 
@@ -844,9 +778,7 @@ def is_prime(n):
 
 ### Độ phức tạp
 
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -868,9 +800,7 @@ def is_prime(n):
 
 ### Độ phức tạp
 
-[
-O(\sqrt{N})
-]
+$O(\sqrt{N})$
 
 ---
 
@@ -879,9 +809,7 @@ O(\sqrt{N})
 Nếu `N = a × b` là hợp số, thì không thể cả `a` và `b` đều lớn hơn `√N`.
 
 Ví dụ:
-[
-36 = 4 \times 9
-]
+$36 = 4 \times 9$
 
 Trong một cặp ước, luôn có ít nhất một ước không vượt quá `√N`.
 
@@ -899,9 +827,7 @@ Tài liệu chuyên Tin dùng chính ví dụ kiểm tra nguyên tố để ch�
 
 ## 1. Một vòng `for` chạy hết N phần tử
 
-[
-O(N)
-]
+$O(N)$
 
 ```python
 for i in range(n):
@@ -912,9 +838,7 @@ for i in range(n):
 
 ## 2. Hai vòng `for` lồng nhau cùng chạy theo N
 
-[
-O(N^2)
-]
+$O(N^2)$
 
 ```python
 for i in range(n):
@@ -926,17 +850,13 @@ for i in range(n):
 
 ## 3. Ba vòng lặp lồng nhau
 
-[
-O(N^3)
-]
+$O(N^3)$
 
 ---
 
 ## 4. Mỗi lần chia đôi
 
-[
-O(\log N)
-]
+$O(\log N)$
 
 ```python
 while n > 0:
@@ -964,9 +884,7 @@ for i in range(n):
 * Đoạn 2: `O(N²)`
 
 Tổng:
-[
-O(N^2)
-]
+$O(N^2)$
 
 ---
 
@@ -1051,9 +969,7 @@ for i in range(n):
 ```
 
 **Đáp án:**
-[
-O(N)
-]
+$O(N)$
 
 ---
 
@@ -1066,9 +982,7 @@ for i in range(n):
 ```
 
 **Đáp án:**
-[
-O(N^2)
-]
+$O(N^2)$
 
 ---
 
@@ -1081,9 +995,7 @@ for i in range(n):
 ```
 
 **Đáp án:**
-[
-O(N^2)
-]
+$O(N^2)$
 
 ---
 
@@ -1095,9 +1007,7 @@ while n > 0:
 ```
 
 **Đáp án:**
-[
-O(\log N)
-]
+$O(\log N)$
 
 Vì mỗi lần `N` bị giảm 10 lần.
 
@@ -1120,13 +1030,7 @@ for j in range(n):
 * Đoạn 2: `O(N²)`
 
 Tổng:
-[
-O(N^2)
-]
-
----
-
-# XIII. Bài tập vận dụng tư duy chọn thuật toán
+$O(N^2)$--- # XIII. Bài tập vận dụng tư duy chọn thuật toán
 
 ---
 
@@ -1159,13 +1063,10 @@ Hãy viết:
 
 ## Bài 9. Đếm số cặp `(i, j)` với `i < j`
 
-Cho dãy có `N` phần tử.
+Cho dãy có `N` phần tử.  
 Hãy ước lượng số cặp có thể tạo ra.
 
-**Gợi ý:**
-[
-\frac{N(N-1)}{2}
-]
+**Gợi ý:** $\frac{N(N-1)}{2}$
 
 ---
 
@@ -1255,7 +1156,7 @@ for i in range(1, n - 1):
             count += 1
 ```
 
-Nhóm bài tập này bám sát hệ thống bài luyện phân tích thuật toán trong tài liệu chuyên Tin. 
+Nhóm bài tập này bám sát hệ thống bài luyện phân tích thuật toán trong tài liệu chuyên Tin.
 
 ---
 
@@ -1267,7 +1168,7 @@ Nhóm bài tập này bám sát hệ thống bài luyện phân tích thuật to
 
 ## Bài toán
 
-Cho dãy số nguyên dương gồm `N` phần tử và một số nguyên dương `K`.
+Cho dãy số nguyên dương gồm `N` phần tử và một số nguyên dương `K`.  
 Hãy xác định xem có tồn tại một đoạn con liên tiếp có tổng bằng `K` hay không.
 
 ---
@@ -1278,26 +1179,17 @@ Hãy đề xuất:
 
 ### Cách 1
 
-Thuật toán có độ phức tạp:
-[
-O(N^3)
-]
+Thuật toán có độ phức tạp: $O(N^3)$
 
 ### Cách 2
 
-Thuật toán có độ phức tạp:
-[
-O(N^2)
-]
+Thuật toán có độ phức tạp: $O(N^2)$
 
 ### Cách 3
 
-Thuật toán có độ phức tạp:
-[
-O(N)
-]
+Thuật toán có độ phức tạp: $O(N)$
 
-Đây là bài tập trực tiếp trong chuyên đề phân tích thuật toán của tài liệu giáo khoa chuyên Tin, rất phù hợp để luyện tư duy “một bài – nhiều cấp độ tối ưu”. 
+Đây là bài tập trực tiếp trong chuyên đề phân tích thuật toán của tài liệu giáo khoa chuyên Tin, rất phù hợp để luyện tư duy “một bài – nhiều cấp độ tối ưu”.
 
 ---
 
@@ -1305,7 +1197,7 @@ O(N)
 
 ## Bài toán
 
-Cho số nguyên dương `N` (`1 ≤ N ≤ 10^12`).
+Cho số nguyên dương `N` (`1 ≤ N ≤ 10^12`).  
 Hãy đếm số lượng số chính phương không vượt quá `N`.
 
 ---
@@ -1313,18 +1205,13 @@ Hãy đếm số lượng số chính phương không vượt quá `N`.
 ## Phân tích yêu cầu
 
 * Nếu làm `O(N)`: không thể chạy.
-* Cần nhận ra:
-  [
-  \text{số lượng} = \lfloor \sqrt{N} \rfloor
-  ]
+* Cần nhận ra: $\text{số lượng} = \lfloor \sqrt{N} \rfloor$
 
 ### Độ phức tạp cần đạt
 
-[
-O(1)
-]
+$O(1)$
 
-Bài này được nêu trong tài liệu nhập môn như một ví dụ điển hình cho việc tối ưu từ duyệt toàn bộ sang công thức trực tiếp. 
+Bài này được nêu trong tài liệu nhập môn như một ví dụ điển hình cho việc tối ưu từ duyệt toàn bộ sang công thức trực tiếp.
 
 ---
 
@@ -1332,24 +1219,19 @@ Bài này được nêu trong tài liệu nhập môn như một ví dụ điể
 
 ## Bài toán
 
-Cho `N ≤ 10^12`.
+Cho `N ≤ 10^12`.  
 Hãy kiểm tra `N` có phải số nguyên tố hay không.
 
 ---
 
 ## Phân tích yêu cầu
 
-* Không thể thử chia đến `N-1`.
-* Cần thử chia đến:
-  [
-  \sqrt{N}
-  ]
+* Không thể thử chia đến `N - 1`.
+* Cần thử chia đến: $\sqrt{N}$
 
 ### Độ phức tạp
 
-[
-O(\sqrt{N})
-]
+$O(\sqrt{N})$
 
 ---
 
@@ -1371,33 +1253,23 @@ for j in range(n):
     ...
 ```
 
-Độ phức tạp vẫn là:
-[
-O(N)
-]
+Độ phức tạp vẫn là: $O(N)$
 
 ---
 
 ## 2. Không bỏ hằng số
 
-Sai:
-[
-O(2N)
-]
+Sai: $O(2N)$
 
-Đúng:
-[
-O(N)
-]
+Đúng: $O(N)$
 
 ---
 
 ## 3. Không phân biệt `O(N + N²)` với `O(N²)`
 
 Khi cộng các độ phức tạp, giữ phần lớn nhất:
-[
-O(N + N^2) = O(N^2)
-]
+
+$O(N + N^2) = O(N^2)$
 
 ---
 
