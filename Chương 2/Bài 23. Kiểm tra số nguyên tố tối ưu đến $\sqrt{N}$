@@ -1,0 +1,1191 @@
+# Bài 23. Kiểm tra số nguyên tố tối ưu đến $\sqrt{N}$
+
+---
+
+# I. Mục tiêu bài học
+
+Sau bài học này, học sinh cần đạt được các yêu cầu sau:
+
+## 1. Về kiến thức
+
+* Hiểu được khái niệm **số nguyên tố**.
+* Phân biệt được:
+
+  * Số nguyên tố.
+  * Hợp số.
+  * Số $1$ không phải là số nguyên tố.
+* Biết cách kiểm tra số nguyên tố bằng phương pháp duyệt đơn giản.
+* Hiểu vì sao chỉ cần thử các ước từ $2$ đến $\sqrt{N}$.
+* Nắm được thuật toán kiểm tra số nguyên tố có độ phức tạp $O(\sqrt{N})$.
+
+## 2. Về kỹ năng
+
+* Viết được chương trình kiểm tra một số có phải là số nguyên tố hay không.
+* Viết được hàm `is_prime(n)` trong Python.
+* Phân tích được độ phức tạp của:
+
+  * Cách kiểm tra từ $2$ đến $N-1$.
+  * Cách kiểm tra từ $2$ đến $\sqrt{N}$.
+* Vận dụng hàm kiểm tra số nguyên tố vào các bài toán:
+
+  * Đếm số nguyên tố trong dãy.
+  * Liệt kê số nguyên tố trong đoạn.
+  * Tìm số nguyên tố đầu tiên lớn hơn $N$.
+
+## 3. Về tư duy
+
+* Biết bắt đầu từ cách làm đơn giản trước.
+* Biết tối ưu thuật toán dựa trên nhận xét toán học.
+* Hình thành thói quen:
+
+  * Phân tích giới hạn dữ liệu.
+  * Chọn thuật toán phù hợp.
+  * Không duyệt thừa khi có thể giảm phạm vi kiểm tra.
+
+---
+
+# II. Lý thuyết
+
+## 1. Số nguyên tố là gì?
+
+Một số nguyên dương $N$ được gọi là **số nguyên tố** nếu:
+
+* $N > 1$.
+* $N$ chỉ có đúng hai ước nguyên dương là $1$ và chính nó.
+
+### Ví dụ
+
+Các số nguyên tố đầu tiên là:
+
+$2, 3, 5, 7, 11, 13, 17, 19, 23, 29, ...$
+
+---
+
+## 2. Hợp số là gì?
+
+Một số nguyên dương $N > 1$ được gọi là **hợp số** nếu nó có nhiều hơn hai ước nguyên dương.
+
+### Ví dụ
+
+* $4$ là hợp số vì có các ước: $1, 2, 4$.
+* $6$ là hợp số vì có các ước: $1, 2, 3, 6$.
+* $9$ là hợp số vì có các ước: $1, 3, 9$.
+
+---
+
+## 3. Lưu ý đặc biệt với số 1
+
+Số $1$:
+
+* Chỉ có một ước là $1$.
+* Không có đúng hai ước.
+
+Vì vậy:
+
+$1$ không phải là số nguyên tố.
+
+---
+
+## 4. Cách đơn giản để kiểm tra số nguyên tố
+
+### 4.1. Ý tưởng
+
+Muốn kiểm tra $N$ có phải số nguyên tố hay không, ta thử chia $N$ cho các số từ $2$ đến $N-1$.
+
+* Nếu tồn tại một số $i$ sao cho $N \bmod i = 0$, thì $N$ không phải số nguyên tố.
+* Nếu không tìm được số nào như vậy, thì $N$ là số nguyên tố.
+
+---
+
+### 4.2. Ví dụ kiểm tra $N = 7$
+
+Ta thử:
+
+* $7 \bmod 2 \ne 0$
+* $7 \bmod 3 \ne 0$
+* $7 \bmod 4 \ne 0$
+* $7 \bmod 5 \ne 0$
+* $7 \bmod 6 \ne 0$
+
+Không có số nào chia hết cho $7$.
+
+Vậy $7$ là số nguyên tố.
+
+---
+
+### 4.3. Ví dụ kiểm tra $N = 12$
+
+Ta thử:
+
+* $12 \bmod 2 = 0$
+
+Ngay khi thấy $12$ chia hết cho $2$, ta kết luận:
+
+$12$ không phải là số nguyên tố.
+
+---
+
+## 5. Cách kiểm tra đơn giản bằng Python
+
+```python
+n = int(input())
+
+if n < 2:
+    print("NO")
+else:
+    is_prime = True
+
+    for i in range(2, n):
+        if n % i == 0:
+            is_prime = False
+            break
+
+    if is_prime:
+        print("YES")
+    else:
+        print("NO")
+```
+
+---
+
+## 6. Phân tích độ phức tạp của cách đơn giản
+
+Trong trường hợp xấu nhất, ta phải thử gần như toàn bộ các số từ $2$ đến $N-1$.
+
+Độ phức tạp là: $O(N)$
+
+Nếu $N$ rất lớn, cách này có thể chạy chậm.
+
+---
+
+## 7. Vì sao chỉ cần thử đến $\sqrt{N}$?
+
+### 7.1. Nhận xét quan trọng
+
+Nếu $N$ là hợp số, thì tồn tại hai số nguyên dương $a$, $b$ sao cho:
+
+$N = a \times b$
+
+Nếu cả $a$ và $b$ đều lớn hơn $\sqrt{N}$ thì:
+
+$a \times b > \sqrt{N} \times \sqrt{N} = N$
+
+Điều này vô lý.
+
+Vì vậy, nếu $N$ là hợp số, thì chắc chắn tồn tại ít nhất một ước không vượt quá $\sqrt{N}$.
+
+---
+
+### 7.2. Kết luận
+
+Để kiểm tra $N$ có phải số nguyên tố hay không, ta chỉ cần thử các số từ $2$ đến $\sqrt{N}$.
+
+Nếu không tìm thấy ước nào trong khoảng đó, thì $N$ là số nguyên tố.
+
+---
+
+## 8. Ví dụ minh họa nhận xét $\sqrt{N}$
+
+### Ví dụ 1. $N = 36$
+
+Ta có:
+
+$36 = 1 \times 36$
+
+$36 = 2 \times 18$
+
+$36 = 3 \times 12$
+
+$36 = 4 \times 9$
+
+$36 = 6 \times 6$
+
+Các cặp ước xuất hiện đối xứng quanh $\sqrt{36} = 6$.
+
+Chỉ cần kiểm tra đến $6$ là đủ.
+
+---
+
+### Ví dụ 2. $N = 91$
+
+Ta có:
+
+$91 = 7 \times 13$
+
+Vì $\sqrt{91} \approx 9.5$, nên chỉ cần kiểm tra các số từ $2$ đến $9$.
+
+Khi kiểm tra đến $7$, ta thấy:
+
+$91 \bmod 7 = 0$
+
+Vậy $91$ không phải là số nguyên tố.
+
+---
+
+## 9. Thuật toán kiểm tra số nguyên tố tối ưu
+
+### 9.1. Ý tưởng
+
+1. Nếu $N < 2$, trả về `False`.
+2. Duyệt $i$ từ $2$ đến khi $i \times i \le N$.
+3. Nếu $N \bmod i = 0$, trả về `False`.
+4. Nếu duyệt xong mà không tìm thấy ước, trả về `True`.
+
+---
+
+### 9.2. Code Python
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+
+    i = 2
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+
+    return True
+```
+
+---
+
+## 10. Vì sao dùng `i * i <= n` thay vì `i <= sqrt(n)`?
+
+Ta có thể viết:
+
+```python
+from math import sqrt
+
+for i in range(2, int(sqrt(n)) + 1):
+    ...
+```
+
+Tuy nhiên, trong các bài thuật toán, cách viết:
+
+```python
+while i * i <= n:
+    ...
+```
+
+thường được dùng nhiều hơn vì:
+
+* Không cần gọi hàm căn bậc hai.
+* Tránh sai số số thực.
+* Dễ áp dụng trong cả Python, C++, Pascal.
+
+---
+
+## 11. Độ phức tạp của thuật toán tối ưu
+
+Ta chỉ duyệt đến $\sqrt{N}$.
+
+Độ phức tạp là: $O(\sqrt{N})$
+
+### So sánh
+
+| Cách làm             | Số lần kiểm tra gần đúng | Độ phức tạp   |
+| -------------------- | -----------------------: | ------------- |
+| Duyệt đến $N-1$      |                      $N$ | $O(N)$        |
+| Duyệt đến $\sqrt{N}$ |               $\sqrt{N}$ | $O(\sqrt{N})$ |
+
+---
+
+## 12. Tối ưu thêm bằng cách bỏ qua số chẵn
+
+### 12.1. Nhận xét
+
+* $2$ là số nguyên tố chẵn duy nhất.
+* Mọi số chẵn lớn hơn $2$ đều không phải số nguyên tố.
+
+Vì vậy:
+
+1. Nếu $N = 2$, kết luận nguyên tố.
+2. Nếu $N$ chẵn và $N > 2$, kết luận không nguyên tố.
+3. Sau đó chỉ cần kiểm tra các ước lẻ: $3, 5, 7, ...$
+
+---
+
+### 12.2. Code tối ưu hơn
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+
+    if n == 2:
+        return True
+
+    if n % 2 == 0:
+        return False
+
+    i = 3
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 2
+
+    return True
+```
+
+---
+
+## 13. So sánh hai cách tối ưu
+
+| Cách   | Kiểm tra các số nào?  | Nhận xét  |
+| ------ | --------------------- | --------- |
+| Cách 1 | $2, 3, 4, 5, ...$     | Dễ hiểu   |
+| Cách 2 | $2$, sau đó chỉ số lẻ | Nhanh hơn |
+
+Với học sinh mới học, cần thành thạo cách 1 trước.
+Sau đó có thể học cách 2 để tối ưu thêm.
+
+---
+
+# III. Ví dụ minh họa
+
+---
+
+## Ví dụ 1. Kiểm tra một số có phải số nguyên tố không
+
+### 1. Đề bài
+
+Cho số nguyên dương $N$.
+Hãy kiểm tra xem $N$ có phải số nguyên tố hay không.
+
+Nếu đúng, in ra `YES`.
+Ngược lại, in ra `NO`.
+
+---
+
+### 2. Phân tích
+
+Một số là số nguyên tố nếu:
+
+* Lớn hơn $1$.
+* Không có ước nào từ $2$ đến $\sqrt{N}$.
+
+---
+
+### 3. Code Python
+
+```python
+n = int(input())
+
+if n < 2:
+    print("NO")
+else:
+    is_prime = True
+    i = 2
+
+    while i * i <= n:
+        if n % i == 0:
+            is_prime = False
+            break
+        i += 1
+
+    if is_prime:
+        print("YES")
+    else:
+        print("NO")
+```
+
+---
+
+### 4. Ví dụ
+
+#### Input
+
+```text
+29
+```
+
+#### Output
+
+```text
+YES
+```
+
+---
+
+### 5. Giải thích
+
+Ta thử các ước:
+
+* $2$: không chia hết.
+* $3$: không chia hết.
+* $4$: không chia hết.
+* $5$: vì $5 \times 5 = 25 \le 29$, vẫn cần kiểm tra.
+* $6$: vì $6 \times 6 = 36 > 29$, dừng lại.
+
+Không có ước nào được tìm thấy.
+
+Vậy $29$ là số nguyên tố.
+
+---
+
+## Ví dụ 2. Kiểm tra số 1, số 2 và số chẵn
+
+### 1. Đề bài
+
+Xét các số:
+
+* $1$
+* $2$
+* $10$
+
+Hãy kết luận từng số có phải là số nguyên tố hay không.
+
+---
+
+### 2. Phân tích
+
+* $1$ không phải số nguyên tố.
+* $2$ là số nguyên tố.
+* $10$ chia hết cho $2$, nên không phải số nguyên tố.
+
+---
+
+### 3. Code Python
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+
+    if n == 2:
+        return True
+
+    if n % 2 == 0:
+        return False
+
+    i = 3
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 2
+
+    return True
+
+numbers = [1, 2, 10]
+
+for x in numbers:
+    if is_prime(x):
+        print(x, "YES")
+    else:
+        print(x, "NO")
+```
+
+---
+
+### 4. Output
+
+```text
+1 NO
+2 YES
+10 NO
+```
+
+---
+
+## Ví dụ 3. Liệt kê các số nguyên tố trong đoạn từ A đến B
+
+### 1. Đề bài
+
+Cho hai số nguyên dương $A$, $B$.
+Hãy liệt kê các số nguyên tố thuộc đoạn $[A, B]$.
+
+---
+
+### 2. Ý tưởng
+
+* Duyệt từng số $x$ từ $A$ đến $B$.
+* Dùng hàm `is_prime(x)` để kiểm tra.
+* Nếu đúng thì in ra.
+
+---
+
+### 3. Code Python
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+
+    i = 2
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+
+    return True
+
+a = int(input())
+b = int(input())
+
+for x in range(a, b + 1):
+    if is_prime(x):
+        print(x)
+```
+
+---
+
+### 4. Ví dụ
+
+#### Input
+
+```text
+10
+30
+```
+
+#### Output
+
+```text
+11
+13
+17
+19
+23
+29
+```
+
+---
+
+## Ví dụ 4. Đếm số nguyên tố trong dãy
+
+### 1. Đề bài
+
+Cho dãy gồm $N$ số nguyên dương.
+Hãy đếm xem trong dãy có bao nhiêu số nguyên tố.
+
+---
+
+### 2. Ý tưởng
+
+* Đọc từng số trong dãy.
+* Kiểm tra số đó có phải số nguyên tố hay không.
+* Nếu đúng, tăng biến đếm.
+
+---
+
+### 3. Code Python
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+
+    i = 2
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+
+    return True
+
+n = int(input())
+
+count = 0
+
+for _ in range(n):
+    x = int(input())
+
+    if is_prime(x):
+        count += 1
+
+print(count)
+```
+
+---
+
+### 4. Ví dụ
+
+#### Input
+
+```text
+5
+2
+4
+5
+9
+11
+```
+
+#### Output
+
+```text
+3
+```
+
+---
+
+### 5. Giải thích
+
+Các số nguyên tố trong dãy là:
+
+$2, 5, 11$
+
+Vậy có $3$ số nguyên tố.
+
+---
+
+## Ví dụ 5. Tìm số nguyên tố nhỏ nhất lớn hơn N
+
+### 1. Đề bài
+
+Cho số nguyên dương $N$.
+Hãy tìm số nguyên tố nhỏ nhất lớn hơn $N$.
+
+---
+
+### 2. Ý tưởng
+
+* Bắt đầu từ $N + 1$.
+* Kiểm tra từng số.
+* Số đầu tiên là nguyên tố chính là kết quả.
+
+---
+
+### 3. Code Python
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+
+    i = 2
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+
+    return True
+
+n = int(input())
+
+x = n + 1
+
+while not is_prime(x):
+    x += 1
+
+print(x)
+```
+
+---
+
+### 4. Ví dụ
+
+#### Input
+
+```text
+20
+```
+
+#### Output
+
+```text
+23
+```
+
+---
+
+# IV. Bài tập vận dụng
+
+---
+
+## Bài 1. Kiểm tra số nguyên tố
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Kiểm tra xem $N$ có phải là số nguyên tố hay không.
+
+Nếu đúng, in `YES`.
+Ngược lại, in `NO`.
+
+---
+
+## Bài 2. Đếm ước để nhận biết nguyên tố
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Hãy đếm số lượng ước nguyên dương của $N$.
+
+Nếu $N$ có đúng $2$ ước thì kết luận $N$ là số nguyên tố.
+
+---
+
+## Bài 3. Liệt kê số nguyên tố không vượt quá N
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Liệt kê tất cả các số nguyên tố từ $2$ đến $N$.
+
+---
+
+## Bài 4. Liệt kê số nguyên tố trong đoạn
+
+### Đề bài
+
+Cho hai số nguyên dương $A$, $B$.
+Liệt kê các số nguyên tố thuộc đoạn $[A, B]$.
+
+---
+
+## Bài 5. Đếm số nguyên tố trong đoạn
+
+### Đề bài
+
+Cho hai số nguyên dương $A$, $B$.
+Đếm xem có bao nhiêu số nguyên tố thuộc đoạn $[A, B]$.
+
+---
+
+## Bài 6. Số nguyên tố lớn nhất không vượt quá N
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Tìm số nguyên tố lớn nhất không vượt quá $N$.
+
+---
+
+## Bài 7. Số nguyên tố nhỏ nhất lớn hơn N
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Tìm số nguyên tố nhỏ nhất lớn hơn $N$.
+
+---
+
+## Bài 8. Đếm số nguyên tố trong dãy
+
+### Đề bài
+
+Cho dãy gồm $N$ số nguyên dương.
+Đếm số lượng phần tử là số nguyên tố.
+
+---
+
+## Bài 9. Tìm số nguyên tố lớn nhất trong dãy
+
+### Đề bài
+
+Cho dãy gồm $N$ số nguyên dương.
+Tìm số nguyên tố lớn nhất xuất hiện trong dãy.
+
+Nếu không có số nguyên tố nào, in `NONE`.
+
+---
+
+## Bài 10. Tổng các số nguyên tố trong dãy
+
+### Đề bài
+
+Cho dãy gồm $N$ số nguyên dương.
+Tính tổng các phần tử là số nguyên tố.
+
+---
+
+# V. Bài tập về nhà
+
+---
+
+## Bài 1. Số nguyên tố hay không?
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+In ra:
+
+* `PRIME` nếu $N$ là số nguyên tố.
+* `COMPOSITE` nếu $N > 1$ và $N$ không phải số nguyên tố.
+* `NEITHER` nếu $N = 1$.
+
+---
+
+## Bài 2. Đếm số nguyên tố nhỏ hơn N
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Đếm số lượng số nguyên tố nhỏ hơn $N$.
+
+---
+
+## Bài 3. Tổng các số nguyên tố từ 1 đến N
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Tính tổng tất cả các số nguyên tố không vượt quá $N$.
+
+---
+
+## Bài 4. Số nguyên tố liền trước
+
+### Đề bài
+
+Cho số nguyên dương $N > 2$.
+Tìm số nguyên tố lớn nhất nhỏ hơn $N$.
+
+---
+
+## Bài 5. Cặp số nguyên tố
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Đếm số cặp số nguyên tố $(p, q)$ sao cho:
+
+$p + q = N$
+
+và:
+
+$p \le q$
+
+---
+
+## Bài 6. Tổng chữ số nguyên tố
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Kiểm tra xem tổng các chữ số của $N$ có phải là số nguyên tố hay không.
+
+---
+
+## Bài 7. Số vừa nguyên tố vừa đối xứng
+
+### Đề bài
+
+Cho số nguyên dương $N$.
+Kiểm tra xem $N$ có đồng thời là:
+
+* Số nguyên tố.
+* Số đối xứng.
+
+Nếu đúng, in `YES`.
+Ngược lại, in `NO`.
+
+---
+
+## Bài 8. Tìm số nguyên tố thứ K
+
+### Đề bài
+
+Cho số nguyên dương $K$.
+Tìm số nguyên tố thứ $K$ trong dãy:
+
+$2, 3, 5, 7, 11, ...$
+
+---
+
+# VI. Lỗi học sinh thường gặp
+
+---
+
+## 1. Cho rằng số 1 là số nguyên tố
+
+Đây là lỗi rất phổ biến.
+
+Cần nhớ:
+
+$1$ không phải là số nguyên tố.
+
+---
+
+## 2. Quên xử lý trường hợp N nhỏ hơn 2
+
+Nếu không xử lý riêng, chương trình có thể kết luận sai với:
+
+* $N = 0$
+* $N = 1$
+
+---
+
+## 3. Duyệt đến N thay vì đến $\sqrt{N}$
+
+Ví dụ:
+
+```python
+for i in range(2, n):
+    ...
+```
+
+Cách này đúng nhưng chậm hơn cần thiết.
+
+---
+
+## 4. Viết điều kiện dừng sai
+
+Cách đúng:
+
+```python
+while i * i <= n:
+```
+
+Nếu viết:
+
+```python
+while i * i < n:
+```
+
+có thể sai với các số chính phương như:
+
+* $4$
+* $9$
+* $25$
+
+---
+
+## 5. Không dừng ngay khi tìm thấy ước
+
+Khi đã phát hiện $N \bmod i = 0$, ta nên kết luận ngay $N$ không phải số nguyên tố.
+
+Nếu vẫn tiếp tục duyệt, chương trình chạy thừa.
+
+---
+
+## 6. Quên kiểm tra số chẵn khi tối ưu thêm
+
+Nếu dùng cách chỉ duyệt các số lẻ, cần xử lý riêng:
+
+* $N = 2$
+* $N$ chẵn lớn hơn $2$
+
+Nếu không, chương trình dễ sai.
+
+---
+
+## 7. Nhầm giữa kiểm tra số nguyên tố và liệt kê số nguyên tố
+
+* Kiểm tra một số dùng hàm `is_prime(n)`.
+* Liệt kê nhiều số nguyên tố cần gọi hàm nhiều lần hoặc dùng sàng Eratosthenes ở bài sau.
+
+---
+
+# VII. Đề thi thật và bài chuẩn chuyên
+
+---
+
+## Đề 1. Số nguyên tố
+
+### Bài toán
+
+Cho số nguyên dương $N$.
+Hãy kiểm tra xem $N$ có phải là số nguyên tố hay không.
+
+### Input
+
+* Một dòng chứa số nguyên dương $N$.
+
+### Output
+
+* In ra `YES` nếu $N$ là số nguyên tố.
+* In ra `NO` trong trường hợp ngược lại.
+
+### Ví dụ 1
+
+#### Input
+
+```text
+17
+```
+
+#### Output
+
+```text
+YES
+```
+
+### Ví dụ 2
+
+#### Input
+
+```text
+21
+```
+
+#### Output
+
+```text
+NO
+```
+
+---
+
+## Đề 2. Liệt kê số nguyên tố trong đoạn
+
+### Bài toán
+
+Cho hai số nguyên dương $A$, $B$.
+Hãy liệt kê tất cả các số nguyên tố trong đoạn $[A, B]$ theo thứ tự tăng dần.
+
+### Input
+
+* Dòng thứ nhất chứa $A$.
+* Dòng thứ hai chứa $B$.
+
+### Output
+
+* Mỗi số nguyên tố in trên một dòng.
+* Nếu không có số nguyên tố nào, in `NONE`.
+
+### Ví dụ
+
+#### Input
+
+```text
+10
+20
+```
+
+#### Output
+
+```text
+11
+13
+17
+19
+```
+
+---
+
+## Đề 3. Số nguyên tố lớn nhất trong dãy
+
+### Bài toán
+
+Cho dãy gồm $N$ số nguyên dương.
+Hãy tìm số nguyên tố lớn nhất trong dãy.
+
+### Input
+
+* Dòng đầu chứa số nguyên dương $N$.
+* $N$ dòng tiếp theo, mỗi dòng chứa một số nguyên dương.
+
+### Output
+
+* In ra số nguyên tố lớn nhất trong dãy.
+* Nếu dãy không có số nguyên tố, in `NONE`.
+
+### Ví dụ
+
+#### Input
+
+```text
+6
+4
+8
+13
+15
+17
+9
+```
+
+#### Output
+
+```text
+17
+```
+
+---
+
+## Đề 4. Tìm số nguyên tố tiếp theo
+
+### Bài toán
+
+Cho số nguyên dương $N$.
+Hãy tìm số nguyên tố nhỏ nhất lớn hơn $N$.
+
+### Input
+
+* Một dòng chứa số nguyên dương $N$.
+
+### Output
+
+* In ra số nguyên tố nhỏ nhất lớn hơn $N$.
+
+### Ví dụ
+
+#### Input
+
+```text
+30
+```
+
+#### Output
+
+```text
+31
+```
+
+---
+
+# VIII. Ghi nhớ cuối bài
+
+* Số nguyên tố là số lớn hơn $1$ và có đúng hai ước.
+* Số $1$ không phải là số nguyên tố.
+* Cách kiểm tra đơn giản là duyệt từ $2$ đến $N-1$.
+* Cách tối ưu là chỉ duyệt đến $\sqrt{N}$.
+* Nếu $N$ là hợp số, chắc chắn tồn tại ít nhất một ước không vượt quá $\sqrt{N}$.
+* Thuật toán kiểm tra số nguyên tố tối ưu có độ phức tạp: $O(\sqrt{N})$.
+* Có thể tối ưu thêm bằng cách:
+
+  * Xử lý riêng số chẵn.
+  * Chỉ kiểm tra các ước lẻ.
+
+---
+
+# IX. Tóm tắt bài học
+
+## Bài 23. Kiểm tra số nguyên tố tối ưu đến $\sqrt{N}$
+
+* Số nguyên tố là số có đúng hai ước: $1$ và chính nó.
+* Các số nguyên tố đầu tiên:
+
+  * $2, 3, 5, 7, 11, 13, ...$
+* Số $1$ không phải số nguyên tố.
+* Kiểm tra chậm:
+
+  * Duyệt từ $2$ đến $N-1$.
+  * Độ phức tạp: $O(N)$.
+* Kiểm tra nhanh:
+
+  * Duyệt từ $2$ đến $\sqrt{N}$.
+  * Độ phức tạp: $O(\sqrt{N})$.
+* Hàm cơ bản:
+
+```python
+def is_prime(n):
+    if n < 2:
+        return False
+
+    i = 2
+
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += 1
+
+    return True
+```
+
+* Các dạng bài thường gặp:
+
+  * Kiểm tra số nguyên tố.
+  * Liệt kê số nguyên tố trong đoạn.
+  * Đếm số nguyên tố trong dãy.
+  * Tìm số nguyên tố lớn nhất trong dãy.
+  * Tìm số nguyên tố đầu tiên lớn hơn $N$.
