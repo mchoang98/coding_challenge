@@ -55,14 +55,12 @@ Ví dụ:
 
 Một đồ thị thường được ký hiệu:
 
-\[
-G = (V, E)
-\]
+$G = (V, E)$
 
 Trong đó:
 
-- \(V\): tập đỉnh.
-- \(E\): tập cạnh.
+- $\(V\)$: tập đỉnh.
+- $\(E\)$: tập cạnh.
 
 ---
 
@@ -99,9 +97,7 @@ Ví dụ:
 
 Nếu cạnh nối `u` và `v` có thể đi cả hai chiều:
 
-\[
-u \leftrightarrow v
-\]
+$u \leftrightarrow v$
 
 thì đó là đồ thị vô hướng.
 
@@ -116,9 +112,7 @@ Ví dụ:
 
 Nếu cạnh đi từ `u` tới `v` nhưng chưa chắc đi ngược lại được:
 
-\[
-u \rightarrow v
-\]
+$u \rightarrow v$
 
 thì đó là đồ thị có hướng.
 
@@ -142,9 +136,7 @@ thì đó là đồ thị có trọng số.
 
 Ví dụ:
 
-\[
-A \xrightarrow{5} B
-\]
+$A \xrightarrow{5} B$
 
 nghĩa là đi từ A tới B tốn chi phí 5.
 
@@ -158,9 +150,7 @@ nghĩa là đi từ A tới B tốn chi phí 5.
 
 Ví dụ:
 
-\[
-1 \rightarrow 3 \rightarrow 5
-\]
+$1 \rightarrow 3 \rightarrow 5$
 
 ---
 
@@ -170,9 +160,9 @@ Chu trình là đường đi bắt đầu và kết thúc tại cùng một đ�
 
 Ví dụ:
 
-\[
+$\[
 1 \rightarrow 2 \rightarrow 3 \rightarrow 1
-\]
+\]$
 
 ---
 
