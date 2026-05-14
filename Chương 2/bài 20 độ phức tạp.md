@@ -59,7 +59,7 @@ Cho số nguyên dương `N`.
 Hãy tính:
 
 [
-S = 1 + 2 + 3 + \dots + N
+S = 1 + 2 + 3 + ... + N
 ]
 
 ---
