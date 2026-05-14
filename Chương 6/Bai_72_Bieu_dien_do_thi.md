@@ -83,18 +83,14 @@ for _ in range(m):
 ## 4. Ưu điểm
 
 - Kiểm tra có cạnh `u-v` hay không rất nhanh:
-  $
-  O(1)
-  $
+  $O(1)$
 
 ---
 
 ## 5. Nhược điểm
 
 - Tốn bộ nhớ:
-  $
-  O(N^2)
-  $
+  $O(N^2)$
 - Không phù hợp với đồ thị lớn nhưng ít cạnh.
 
 ---
@@ -144,9 +140,7 @@ for _ in range(m):
 ## 4. Ưu điểm
 
 - Tiết kiệm bộ nhớ:
-  $
-  O(N + M)
-  $
+  $O(N + M)$
 - Rất phù hợp cho BFS, DFS.
 
 ---
@@ -161,9 +155,7 @@ for _ in range(m):
 
 Nếu có cạnh:
 
-$
-u \rightarrow v
-$
+$u \rightarrow v$
 
 thì chỉ thêm:
 
@@ -179,9 +171,7 @@ Không thêm ngược lại.
 
 Nếu cạnh có dạng:
 
-$
-u \leftrightarrow v, \text{ trọng số } w
-$
+$u \leftrightarrow v, \text{ trọng số } w$
 
 thì lưu cặp:
 
