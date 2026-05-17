@@ -202,9 +202,7 @@ Ngay cả khi Python có quy tắc ưu tiên, ta vẫn nên dùng dấu ngoặc 
 
 Công thức:
 
-[
-P = 2(a+b)
-]
+$P = 2(a+b)$
 
 Nên viết:
 
@@ -307,9 +305,7 @@ Output:
 
 Giải thích:
 
-[
-17 = 5 \times 3 + 2
-]
+$17 = 5 \times 3 + 2$
 
 ---
 
@@ -320,9 +316,7 @@ Giải thích:
 Nhập hai số nguyên `a`, `b`.
 Tính:
 
-[
-(a+b)^2
-]
+$(a+b)^2$
 
 ### Code
 
@@ -381,9 +375,7 @@ a^2 + b^2
 Nhập hai số nguyên `a`, `b`.
 Tính và in ra:
 
-[
-(a+b)^2
-]
+$(a+b)^2$
 
 ---
 
@@ -394,9 +386,7 @@ Tính và in ra:
 Nhập hai số nguyên `a`, `b`.
 Tính:
 
-[
-P = a^2 + 2ab + b^2
-]
+$P = a^2 + 2ab + b^2$
 
 ---
 
@@ -407,9 +397,7 @@ Tính số giây tương ứng.
 
 ### Gợi ý
 
-[
-\text{Số giây} = m \times 60
-]
+$\text{Số giây} = m \times 60$
 
 ---
 
@@ -418,9 +406,7 @@ Tính số giây tương ứng.
 Nhập cạnh hình vuông `a`.
 Tính diện tích:
 
-[
-S = a^2
-]
+$S = a^2$
 
 ---
 
@@ -490,9 +476,7 @@ p = 2 * a + b
 
 Công thức trên thực chất là:
 
-[
-2a + b
-]
+$2a + b$
 
 ### Đúng
 
